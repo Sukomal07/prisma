@@ -2,24 +2,21 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-async function main() {
-  const user = await prisma.user.create({
-    data: {
-      email: "sukomal@gmail.com",
-      name: "Sukomal Dutta",
-      password: "1234",
+async function deleteUser(email: string) {
+  await prisma.user.delete({
+    where: {
+      email: email,
     },
   });
-  console.log(user);
+  console.log("done");
 }
 
-main()
+deleteUser("sukomal@gmail.com")
   .then(async () => {
-    console.log("done");
     await prisma.$disconnect();
   })
   .catch(async (e) => {
-    console.error(e);
+    console.log(e);
     await prisma.$disconnect();
     process.exit(1);
   });

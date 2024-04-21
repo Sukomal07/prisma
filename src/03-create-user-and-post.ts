@@ -7,6 +7,7 @@ async function main() {
     data: {
       email: "sukomal01@gmail.com",
       name: "Sukomal Dutta",
+      password: "1234",
       posts: {
         create: [
           {
